@@ -4,13 +4,19 @@ A cutting-edge AI SaaS platform that enables users to create, discover, and enjo
 
 ## <a name="tech-stack">Tech Stack</a>
 
--Next.js
--TypeScript
--Convex
--OpenAI
--Clerk
--ShadCN
--Tailwind CSS
+- Next.js
+
+- TypeScript
+
+- Convex
+
+- OpenAI
+
+- Clerk
+
+- ShadCN
+
+- Tailwind CSS
 
 ## <a name="features">PodCraft Features</a>
 
