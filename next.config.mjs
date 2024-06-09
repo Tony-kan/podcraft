@@ -10,6 +10,11 @@ const nextConfig = {
 				protocol:'https',
 				hostname:"amicable-bobcat-621.convex.cloud",
 			}
+			,{
+				protocol:"https",
+				hostname:'img.clerk.com',
+				
+			}
 		],
 	},
 };
