@@ -97,7 +97,7 @@ const GeneratePodcast = (props: GeneratePodcastProps) => {
       <div className="mt-5 w-full max-w-[200px]">
         <Button
           type="submit"
-          className="text-16 w-full bg-orange-1 py-4 font-extrabold text-white-1 transition-all duration-500 hover:bg-black-1"
+          className="text-16 w-full bg-orange-1 py-4 font-extrabold text-white-1 transition-all duration-500 hover:bg-black-1 hover:border-2 hover:border-orange-1"
           onClick={generatePodcast}
         >
           {isGenerating ? (
@@ -106,7 +106,7 @@ const GeneratePodcast = (props: GeneratePodcastProps) => {
               <Loader size={20} className="animate-spin ml-2" />
             </>
           ) : (
-            "Generate"
+            "Generate Podcast"
           )}
         </Button>
       </div>

@@ -30,6 +30,12 @@ import GeneratePodcast from "@/components/generate-podcast";
 import GenerateThumbnail from "@/components/generate-thumbnail";
 import { Loader } from "lucide-react";
 import { Id } from "@/convex/_generated/dataModel";
+import { useToast } from "@/components/ui/use-toast";
+import { useMutation } from "convex/react";
+import { api } from "@/convex/_generated/api";
+import { useRouter } from "next/navigation";
+
+// import Error from "next/error";
 
 const voiceCategories = ["alloy", "shimmer", "nova", "echo", "fable", "onyx"];
 const formSchema = z.object({
@@ -42,7 +48,13 @@ const formSchema = z.object({
 });
 
 const CreatePodcast = () => {
+  const { toast } = useToast();
+
+  const router = useRouter();
+
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const createPodcast = useMutation(api.podcast.createPodcast);
 
   const [imagePrompt, setImagePrompt] = useState("");
   const [imageUrl, setImageUrl] = useState("");
@@ -68,10 +80,47 @@ const CreatePodcast = () => {
   });
 
   // 2. Define a submit handler.
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
-    console.log(values);
+  async function onSubmit(data: z.infer<typeof formSchema>) {
+    try {
+      setIsSubmitting(true);
+      if (!audioUrl || !imageUrl || !voiceType) {
+        toast({
+          title: "Please generate audio and image",
+          // description: `Error Description : ${error}`,
+          // variant: "destructive",
+        });
+        setIsSubmitting(false);
+        throw new Error("Please generate audio and image");
+      }
+
+      const podcast = await createPodcast({
+        podcastTitle: data.podcastTitle,
+        podcastDescription: data.podcastDescription,
+        audioUrl,
+        imageUrl,
+        voiceType,
+        imagePrompt,
+        voicePrompt,
+        views: 0,
+        audioDuration,
+        audioStorageId: audioStorageId!,
+        imageStorageId: imageStorageId!,
+      });
+
+      toast({
+        title: `podcast created : ${podcast}`,
+      });
+      setIsSubmitting(false);
+      router.push("/");
+    } catch (error) {
+      console.log(error);
+      toast({
+        title: `Error ! submitting a podcast`,
+        description: `Error Description : ${error}`,
+        variant: "destructive",
+      });
+    }
+    // console.log(values);
   }
 
   return (
@@ -182,7 +231,7 @@ const CreatePodcast = () => {
             <div className="mt-10 w-full">
               <Button
                 type="submit"
-                className="text-16 w-full bg-orange-1 py-4 font-extrabold text-white-1 transition-all duration-500 hover:bg-black-1"
+                className="text-16 w-full bg-orange-1 py-4 font-extrabold text-white-1 transition-all duration-500 hover:bg-black-1 hover:border-2 hover:border-orange-1"
               >
                 {isSubmitting ? (
                   <>
