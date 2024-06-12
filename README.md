@@ -18,6 +18,8 @@ A cutting-edge AI SaaS platform that enables users to create, discover, and enjo
 
 - Tailwind CSS
 
+- Embla Carousel
+
 ## <a name="features">🔋 PodCraft Features</a>
 
 👉 **Robust Authentication**: Secure and reliable user login and registration system.
