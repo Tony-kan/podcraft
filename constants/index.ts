@@ -13,12 +13,7 @@ export const sidebarLinks = [
     imgURL: "/icons/microphone.svg",
     route: "/create-podcast",
     label: "Create Podcast",
-  },
-  {
-    imgURL: "/icons/profile.svg",
-    route: "/profile",
-    label: "Profile",
-  },
+  }
 ];
 
 export const voiceDetails = [

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Manrope } from "next/font/google";
 import "./globals.css";
 import ConvexClerkProvider from "@/providers/ConvexClerkProvider";
 import AudioProvider from "@/providers/AudioProvider";
@@ -12,6 +12,8 @@ export const metadata: Metadata = {
   icons: "/icons/logo.svg",
 };
 
+const manrope = Manrope({ subsets: ["latin"] });
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -21,7 +23,9 @@ export default function RootLayout({
     <ConvexClerkProvider>
       <html lang="en">
         <AudioProvider>
-          <body className={inter.className}>{children}</body>
+          <body className={`${manrope.className}`}>
+            {children}
+          </body>
         </AudioProvider>
       </html>
     </ConvexClerkProvider>
