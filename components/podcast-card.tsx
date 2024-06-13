@@ -11,13 +11,13 @@ const PodcastCard = ({
   imgUrl: string;
   title: string;
   description: string;
-  podcastId: number;
+  podcastId: string;
 }) => {
   const router = useRouter();
 
   const handleView = () => {
     //todo : increment views
-    
+
     router.push(`/podcasts/${podcastId}`, { scroll: true });
   };
 
