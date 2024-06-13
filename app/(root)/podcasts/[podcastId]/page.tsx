@@ -48,8 +48,8 @@ const PodcastDetails = ({
         podcastId={podcast._id}
         {...podcast}
       />
-
-      <p className="text-white-2 text-16 pb-8 pt-[45px] font-medium max-md:text-center">
+      <h1 className="text-18 font-bold pt-[45px] pb-4 text-white-1">Description</h1>
+      <p className="text-white-2 text-16 pb-8  font-medium max-md:text-center">
         {podcast?.podcastDescription}
       </p>
 

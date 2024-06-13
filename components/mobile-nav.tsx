@@ -18,7 +18,7 @@ const MobileNav = () => {
   return (
     <section>
       <Sheet>
-        <SheetTrigger> 
+        <SheetTrigger>
           <Image
             src="/icons/hamburger.svg"
             width={30}
