@@ -80,7 +80,11 @@ const CreatePodcast = () => {
   });
 
   // 2. Define a submit handler.
-  async function onSubmit(data: z.infer<typeof formSchema>) {
+  async function onSubmit(
+    
+    data: z.infer<typeof formSchema>
+  ) {
+   
     try {
       setIsSubmitting(true);
       if (!audioUrl || !imageUrl || !voiceType) {
@@ -114,11 +118,11 @@ const CreatePodcast = () => {
       router.push("/");
     } catch (error) {
       console.log(error);
-      toast({
-        title: `Error ! submitting a podcast`,
-        description: `Error Description : ${error}`,
-        variant: "destructive",
-      });
+      // toast({
+      //   title: `Error ! submitting a podcast`,
+      //   description: `Error Description : ${error}`,
+      //   variant: "destructive",
+      // });
     }
     // console.log(values);
   }
@@ -128,7 +132,8 @@ const CreatePodcast = () => {
       <h1 className="text-20 font-bold text-white-1">Create Podcast</h1>
       <Form {...form}>
         <form
-          onSubmit={form.handleSubmit(onSubmit)}
+          // onSubmit={form.handleSubmit(onSubmit)}
+          onSubmit={form.handleSubmit((data) => onSubmit(data))}
           className="mt-12 flex w-full flex-col"
         >
           <div className="flex flex-col gap-[30px] border-b border-black-5 pb-10">
